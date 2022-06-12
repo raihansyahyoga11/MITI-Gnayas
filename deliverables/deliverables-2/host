@@ -1,0 +1,37 @@
+---
+all:
+    children:
+        db-server-1:
+            hosts: 35.231.229.89
+            vars:
+                mysql_root_pass: rootwordpress
+                mysql_db: wordpress
+                mysql_user: wordpress
+                mysql_pass: wordpress
+        
+        web-server:
+            hosts: 35.229.125.237
+            vars:
+                wordpress_db_host: 35.231.229.89:3306
+                wordpress_db_user: wordpress
+                wordpress_db_password: wordpress
+                wordpress_db_name: wordpress
+
+        web-server-2:
+            hosts: 34.75.187.175
+            vars:
+                wordpress_db_host: 35.231.229.89:3306
+                wordpress_db_user: wordpress
+                wordpress_db_password: wordpress
+                wordpress_db_name: wordpress
+
+        load-balancer:
+            hosts: 35.222.208.94
+            vars :
+                mysql_root_pass: rootwordpress
+                mysql_db: wordpress
+                mysql_user: wordpress
+                mysql_pass: wordpress
+        
+        monitoring-tools:
+            hosts: 35.224.93.206
